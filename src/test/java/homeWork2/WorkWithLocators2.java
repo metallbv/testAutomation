@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class WorkWithLocators2 {
 
@@ -23,6 +24,7 @@ public class WorkWithLocators2 {
   public void setUp() {
     System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
     driver = new ChromeDriver();
+    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
   }
 
   @Test
@@ -30,14 +32,15 @@ public class WorkWithLocators2 {
     driver.get(wikiUrlEpam);
 
     List<WebElement> dateElements = driver.findElements(By.xpath("//table[@class=\"wikitable sortable jquery-tablesorter\"]/tbody/tr/td/span/a[text()='USA']"));
-    System.out.println("count dates " + dateElements.size());
+    logger.debug("count dates " + dateElements.size());
 
     Assert.assertTrue(true);
+    driver.close();
   }
 
   @After
   public void afterTest() {
-    driver.close();
+    driver = null;
   }
 
 }
