@@ -4,9 +4,6 @@ import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.runners.Parameterized;
 
 import java.lang.reflect.Method;
 
@@ -19,17 +16,17 @@ public abstract class BaseTest extends DriverFactory {
   //@Parameterized.Parameters(name = ("browserName"))
   @Before
   public void beforeMethod() {
-    initDriver(Constants.BusinessConfigs.BASE_URL);
-    logger = Logger.getLogger(method.getDeclaringClass());
+    initDriver(Constants.DriverConfigs.CHROME_NAME);
+    /*logger = Logger.getLogger(method.getDeclaringClass());
     test = method.getAnnotation(Test.class);
     logger.info("");
-    logger.info("");
+    logger.info("");*/
   }
 
   @After
-  public void afterMethod(final Method method) {
+  public void afterMethod() {
     this.method = method;
-    logger.info(String.format("Test '%s' completed", method.getName()));
+    //logger.info(String.format("Test '%s' completed", method.getName()));
     quitDriver();
   }
 }
