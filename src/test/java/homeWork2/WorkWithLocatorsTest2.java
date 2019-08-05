@@ -13,9 +13,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class WorkWithLocators2 {
+public class WorkWithLocatorsTest2 {
 
-  final static Logger logger = Logger.getLogger(WorkWithLocators2.class);
+  final static Logger logger = Logger.getLogger(WorkWithLocatorsTest2.class);
 
   private WebDriver driver;
   private String wikiUrlEpam = "https://en.wikipedia.org/wiki/EPAM_Systems";
@@ -24,7 +24,8 @@ public class WorkWithLocators2 {
   public void setUp() {
     System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
     driver = new ChromeDriver();
-    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    driver.manage().window().maximize();
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   }
 
   @Test

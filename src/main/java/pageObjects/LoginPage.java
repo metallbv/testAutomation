@@ -1,9 +1,11 @@
+package pageObjects;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 
-  By usernameLocator = By.id("signInEmail");
+  /*By usernameLocator = By.id("signInEmail");
   By passwordLocator = By.id("signInPassword");
   By loginButtonLocator = By.xpath("//input[@class=\"popup-reg-sign-in-form__sign-in\"]");
 
@@ -41,6 +43,6 @@ public class LoginPage {
     typeUsername(username);
     typePassword(password);
     return submitLogin();
-  }
+  }*/
 
 }

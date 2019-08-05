@@ -15,9 +15,9 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class WorkWithLocators {
+public class WorkWithLocatorsTest {
 
-  final static Logger logger = Logger.getLogger(WorkWithLocators.class);
+  final static Logger logger = Logger.getLogger(WorkWithLocatorsTest.class);
 
   private WebDriver driver;
   JavascriptExecutor js;
