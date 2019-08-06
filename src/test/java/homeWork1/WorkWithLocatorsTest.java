@@ -33,6 +33,8 @@ public class WorkWithLocatorsTest {
   private String searchItem1 = "Java";
   private String searchItem2 = "DATA";
   private String searchItem3 = "Pascal";
+  private String searchLocation1 = "Kyiv";
+  private String searchLocation2 = "Los Angeles";
 
   @Before
   public void setUp() {
@@ -63,6 +65,34 @@ public class WorkWithLocatorsTest {
     WebElement submitElement = driver.findElement(By.xpath("//input[@class=\"popup-reg-sign-in-form__sign-in\"]"));
     submitElement.click();
     logger.debug("Click on submit button");
+
+    WebElement trainingListButton = driver.findElement(By.xpath("//div[@class=\"container\"]/nav/ul/li/a[@class=\"topNavItem training click hover\"]"));
+    if (trainingListButton.isEnabled() && !trainingListButton.isSelected()) {
+      trainingListButton.click();
+      logger.debug("Click training list button");
+    }
+
+    WebElement filterItemLocationsArrow = driver.findElement(By.xpath("//div[@class=\"filter__item filter__item-locations\"]/div/div[@class=\"filter-field__arrow-icon\"]"));
+    js.executeScript("arguments[0].scrollIntoView();", filterItemLocationsArrow);
+    filterItemLocationsArrow.click();
+    logger.debug("Filter item locations arrow was clicked");
+
+    WebElement inputFieldLocations = driver.findElement(By.xpath("//div[@class=\"drop-down drop-down-locations drop-down-visibility\"]/input"));
+    inputFieldLocations.sendKeys(searchLocation1);
+    logger.debug("Perform search for " + searchLocation1 + " search location");
+
+    List<WebElement> listOfLocations = driver.findElements(By.xpath("//div[@class=\"drop-down drop-down-locations drop-down-visibility\"]/ul[@class=\"drop-down__input-search__list\"]/li"));
+    Assert.assertEquals(2, listOfLocations.size());
+    logger.debug("Count elements with " + searchLocation1 + " are " + listOfLocations.size());
+
+    inputFieldLocations.clear();
+    inputFieldLocations.sendKeys(searchLocation2);
+    logger.debug("Perform search for " + searchLocation2 + " search location");
+
+    listOfLocations = driver.findElements(By.xpath("//div[@class=\"drop-down drop-down-locations drop-down-visibility\"]/ul[@class=\"drop-down__input-search__list\"]/li"));
+    Assert.assertEquals(2, listOfLocations.size());
+    logger.debug("Count elements with " + searchLocation2 + " are " + listOfLocations.size());
+
   }
 
   @Test
@@ -166,7 +196,6 @@ public class WorkWithLocatorsTest {
     listOfScills = driver.findElements(By.xpath("//div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/ul[@class=\"drop-down__input-search__list\"]/li"));
     Assert.assertEquals(0, listOfScills.size());
     logger.debug("Count elements with " + searchItem3 + " are " + listOfScills.size());
-
 
   }
 
