@@ -4,6 +4,7 @@ import org.junit.Assert;
 import pageObjects.SignInPage;
 
 public class SignInBO {
+
   private SignInPage signInPage;
 
   public SignInBO() {

@@ -42,7 +42,7 @@ public class SignInPage extends AbstractPage {
 
   public boolean isLoginFailedErrorMessageDisplayed() {
     boolean isDisplayed = loginFailedErrorMessage.isDisplayed();
-    logger.info("Login failed");
+    logger.info(String.format("Login failed, error message displayed %s", isDisplayed));
     return isDisplayed;
   }
 

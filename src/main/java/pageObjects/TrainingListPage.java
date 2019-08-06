@@ -9,32 +9,55 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class TrainingListPage extends AbstractPage {
+
   private static final Logger logger = Logger.getLogger(TrainingListPage.class);
 
-  @FindBy (xpath = "//div[@class=\"filter__item filter__item-skills\"]/div/div[@class=\"filter-field__arrow-icon\"]")
-  private Button expandAllScillsArrow;
+  @FindBy (xpath = "//div[@class=\"filter-field__arrow-icon\" & @ng-click=\"openSkillsDropDown()\"]")
+  private Button expandAllSkillsArrow;
 
-  @FindBy (xpath = "//div[@class=\"filter__item filter__item-skills\"]/div/div[@class=\"filter-field__arrow-icon\"]")
-  private Button colapseAllScillsArrow;
+  @FindBy (xpath = "//class=\"filter-field__arrow-icon arrow-icon-rotate\" & @ng-click=\"openSkillsDropDown()\"]")
+  private Button collapseAllSkillsArrow;
 
-  @FindBy (xpath = "///div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/input")
-  private TextInput scillsSearchInput;
+  @FindBy (xpath = "//input[@ng-model=\"searchTrainingBySkills\"]")
+  private TextInput skillsSearchInput;
 
-  @FindBy (xpath = "///div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/input")
-  private List<WebElement> scillsSearchResultsList;
+  @FindBy (xpath = "//label[contains(@ng-class, 'Skill')]")
+  private List<WebElement> skillsSearchResultsList;
 
-  public TrainingListPage expandScillsModalWindow() {
-    waitForElementToBeVisible(expandAllScillsArrow);
-    expandAllScillsArrow.click();
-    logger.info("Expand 'Scills' modal window");
+  public TrainingListPage expandSkillsModalWindow() {
+    waitForElementToBeVisible(expandAllSkillsArrow);
+    expandAllSkillsArrow.click();
+    logger.info("Expand 'Skills' modal window");
     return this;
   }
 
-  public TrainingListPage collapseScillsModalWindow() {
-    waitForElementToBeVisible(colapseAllScillsArrow);
-    colapseAllScillsArrow.click();
-    logger.info("Collapse 'Scills' modal window");
+  public TrainingListPage collapseSkillsModalWindow() {
+    waitForElementToBeVisible(collapseAllSkillsArrow);
+    collapseAllSkillsArrow.click();
+    logger.info("Collapse 'Skills' modal window");
     return this;
+  }
+
+  public boolean isSkillModalWindowExpanded() {
+    return collapseAllSkillsArrow.isDisplayed();
+  }
+
+  public TrainingListPage performSearchInSkills(String searchTerm) {
+    skillsSearchInput.sendKeys(searchTerm);
+    return this;
+  }
+
+  public TrainingListPage clearSkillsInput() {
+    skillsSearchInput.clear();
+    return this;
+  }
+
+  public List<WebElement> getSkillsSearchResultsElements() {
+    return skillsSearchResultsList;
+  }
+
+  public boolean isSkillSearchResultsPresent() {
+    return !skillsSearchResultsList.isEmpty();
   }
 
 }

@@ -6,7 +6,7 @@ import pageObjects.businessObjects.TrainingListBO;
 public class TrainingListPageTest {
 
   @Test
-  public void testVerifyTrainingsSearchWorksProperlyForScills() {
+  public void testVerifyTrainingsSearchWorksProperlyForSkills() {
     TrainingListBO trainingListBO = new TrainingListBO();
 
     new HomeBO()
@@ -15,7 +15,7 @@ public class TrainingListPageTest {
       .login("vitaliy.babiak@gmail.com", "Pswepam_")
       .openPage(TrainingListPage.class);
     trainingListBO
-      .expandScillsModalWindow()
+      .expandSkillsModalWindow()
       .performSearchInSkills("Java")
       .verifyEachListElementContainsWord(trainingListBO.getSkillsSearchResultsTextList(), "Java");
     trainingListBO

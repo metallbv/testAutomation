@@ -9,13 +9,13 @@ public class SignInPageTest extends BaseTest {
     new HomeBO()
       .proceedToHomePage()
       .clickSignInButton()
-      .login("abc@gmail.com","abc");
+      .login("abc@gmail.com","abc123");
     new SignInBO()
       .verifyFailedLoginErrorMessageDisplayed();
   }
 
   @Test
-  public void ferifyUserSuccessfullyLoggedIn() {
+  public void ferifyUserIsSuccessfullyLoggedIn() {
 
     HomeBO homeBO = new HomeBO();
     homeBO

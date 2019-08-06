@@ -10,11 +10,23 @@ public class HomePage extends AbstractPage {
 
   private static final Logger logger = Logger.getLogger(HomePage.class);
 
-  @FindBy(xpath = "//p[@class=\"header-auth__signin\"]")
+  @FindBy(xpath = "//p[@class=\"header-auth__signin\"]//span")
   private Button signInButton;
 
-  @FindBy(xpath = "//div[@class=\"user-info__name\"]")
-  private PageElement userNameLabel;
+  @FindBy(className = "user-info__name")
+  private PageElement topRightCornerUserNameElement;
+
+  @FindBy(xpath = "//ul[@class=\"main-nav__list\"]//a[contains(@class, 'training')]")
+  private Button trainingListPageButton;
+
+  @FindBy(className = "//ul[@class=\"main-nav__list\"]//a[contains(@class, 'news')]")
+  private Button newsPageButton;
+
+  @FindBy(className = "//ul[@class=\"main-nav__list\"]//a[contains(@class, 'about')]")
+  private Button aboutPageButton;
+
+  @FindBy(xpath = "//ul[@class=\"main-nav__list\"]//a[contains(@class, 'faq')]")
+  private Button FAQPageButton;
 
   public HomePage() {
     super();
@@ -27,11 +39,11 @@ public class HomePage extends AbstractPage {
   }
 
   public boolean isUserNameShown() {
-    return userNameLabel.isDisplayed();
+    return topRightCornerUserNameElement.isDisplayed();
   }
 
   public String getUserName() {
-    return userNameLabel.getText();
+    return topRightCornerUserNameElement.getText();
   }
 
 }

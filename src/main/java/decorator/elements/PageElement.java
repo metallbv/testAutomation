@@ -50,11 +50,11 @@ public class PageElement implements WebElement {
   }
 
   public List<WebElement> findElements(By by) {
-    return null;
+    return webElement.findElements(by);
   }
 
   public WebElement findElement(By by) {
-    return null;
+    return webElement.findElement(by);
   }
 
   public boolean isDisplayed() {

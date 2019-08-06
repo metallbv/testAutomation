@@ -38,7 +38,7 @@ public class WorkWithLocatorsTest {
 
   @Before
   public void setUp() {
-    System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
+    System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
     driver = new ChromeDriver();
     driver.manage().window().maximize();
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -168,34 +168,34 @@ public class WorkWithLocatorsTest {
       logger.debug("Click training list button");
     }
 
-    WebElement filterItemScillsArrow = driver.findElement(By.xpath("//div[@class=\"filter__item filter__item-skills\"]/div/div[@class=\"filter-field__arrow-icon\"]"));
-    js.executeScript("arguments[0].scrollIntoView();", filterItemScillsArrow);
-    filterItemScillsArrow.click();
-    logger.debug("Filter item scills arrow was clicked");
+    WebElement filterItemSkillsArrow = driver.findElement(By.xpath("//div[@class=\"filter__item filter__item-skills\"]/div/div[@class=\"filter-field__arrow-icon\"]"));
+    js.executeScript("arguments[0].scrollIntoView();", filterItemSkillsArrow);
+    filterItemSkillsArrow.click();
+    logger.debug("Filter item skills arrow was clicked");
 
-    WebElement inputFieldScills = driver.findElement(By.xpath("//div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/input"));
-    inputFieldScills.sendKeys(searchItem1);
+    WebElement inputFieldSkills = driver.findElement(By.xpath("//div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/input"));
+    inputFieldSkills.sendKeys(searchItem1);
     logger.debug("Perform search for " + searchItem1 + " search term");
 
-    List<WebElement> listOfScills = driver.findElements(By.xpath("//div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/ul[@class=\"drop-down__input-search__list\"]/li"));
-    Assert.assertEquals(2, listOfScills.size());
-    logger.debug("Count elements with " + searchItem1 + " are " + listOfScills.size());
+    List<WebElement> listOfSkills = driver.findElements(By.xpath("//div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/ul[@class=\"drop-down__input-search__list\"]/li"));
+    Assert.assertEquals(2, listOfSkills.size());
+    logger.debug("Count elements with " + searchItem1 + " are " + listOfSkills.size());
 
-    inputFieldScills.clear();
-    inputFieldScills.sendKeys(searchItem2);
+    inputFieldSkills.clear();
+    inputFieldSkills.sendKeys(searchItem2);
     logger.debug("Perform search for " + searchItem2 + " search term");
 
-    listOfScills = driver.findElements(By.xpath("//div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/ul[@class=\"drop-down__input-search__list\"]/li"));
-    Assert.assertEquals(2, listOfScills.size());
-    logger.debug("Count elements with " + searchItem2 + " are " + listOfScills.size());
+    listOfSkills = driver.findElements(By.xpath("//div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/ul[@class=\"drop-down__input-search__list\"]/li"));
+    Assert.assertEquals(2, listOfSkills.size());
+    logger.debug("Count elements with " + searchItem2 + " are " + listOfSkills.size());
 
-    inputFieldScills.clear();
-    inputFieldScills.sendKeys(searchItem3);
+    inputFieldSkills.clear();
+    inputFieldSkills.sendKeys(searchItem3);
     logger.debug("Perform search for " + searchItem3 + " search term");
 
-    listOfScills = driver.findElements(By.xpath("//div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/ul[@class=\"drop-down__input-search__list\"]/li"));
-    Assert.assertEquals(0, listOfScills.size());
-    logger.debug("Count elements with " + searchItem3 + " are " + listOfScills.size());
+    listOfSkills = driver.findElements(By.xpath("//div[@class=\"drop-down drop-down-skills drop-down-visibility\"]/ul[@class=\"drop-down__input-search__list\"]/li"));
+    Assert.assertEquals(0, listOfSkills.size());
+    logger.debug("Count elements with " + searchItem3 + " are " + listOfSkills.size());
 
   }
 

@@ -4,6 +4,7 @@ import consts.Constants;
 import org.junit.Assert;
 import pageObjects.HomePage;
 import pageObjects.SignInPage;
+import pageObjects.TrainingListPage;
 
 public class HomeBO {
 
@@ -12,6 +13,10 @@ public class HomeBO {
   public HomePage proceedToHomePage() {
     homePage = new HomePage();
     homePage.proceedToPage(Constants.BusinessConfigs.BASE_URL);
+    return homePage;
+  }
+
+  public HomePage openPage(Class<TrainingListPage> trainingListPageClass) {
     return homePage;
   }
 
