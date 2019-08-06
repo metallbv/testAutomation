@@ -16,6 +16,7 @@ public class SignInPageTest extends BaseTest {
 
   @Test
   public void ferifyUserSuccessfullyLoggedIn() {
+
     HomeBO homeBO = new HomeBO();
     homeBO
       .proceedToHomePage()
