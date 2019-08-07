@@ -5,13 +5,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Method;
-
 public abstract class BaseTest extends DriverFactory {
 
   private Logger logger = Logger.getLogger(BaseTest.class);
   private Test test;
-  private Method method;
 
   //@Parameterized.Parameters(name = ("browserName"))
   @Before
@@ -25,7 +22,7 @@ public abstract class BaseTest extends DriverFactory {
 
   @After
   public void afterMethod() {
-    this.method = method;
+    //this.method = method;
     //logger.info(String.format("Test '%s' completed", method.getName()));
     quitDriver();
   }

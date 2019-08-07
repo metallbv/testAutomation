@@ -3,7 +3,7 @@ import pageObjects.TrainingListPage;
 import pageObjects.businessObjects.HomeBO;
 import pageObjects.businessObjects.TrainingListBO;
 
-public class TrainingListPageTest {
+public class TrainingListPageTest extends BaseTest {
 
   @Test
   public void testVerifyTrainingsSearchWorksProperlyForSkills() {
@@ -24,8 +24,8 @@ public class TrainingListPageTest {
       .verifyEachListElementContainsWord(trainingListBO.getSkillsSearchResultsTextList(), "Data");
     trainingListBO
       .clearSkillsInput()
-      .performSearchInSkills("DATA")
-      .verifyEachListElementContainsWord(trainingListBO.getSkillsSearchResultsTextList(), "Data");
+      .performSearchInSkills("Pascal")
+      .verifyNoSearchResultsAreReturnedForSkillsSearch(trainingListBO.getSkillsSearchResultsTextList(), "Pascal");
 
   }
 }

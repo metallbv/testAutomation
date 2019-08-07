@@ -7,7 +7,7 @@ public interface Constants {
 
     String CHROME_DRIVER_LOCATION = "D:\\Drivers\\chromedriver.exe";
 
-    int IMPLICITY_WAIT_VALUE = 10;
+    int IMPLICITY_WAIT_VALUE = 20;
   }
 
   interface BusinessConfigs {

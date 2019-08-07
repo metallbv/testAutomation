@@ -16,7 +16,8 @@ public class TrainingListBO {
   }
 
   public TrainingListBO expandSkillsModalWindow() {
-    if (!trainingListPage.isSkillModalWindowExpanded()) {
+    //if (!trainingListPage.isSkillModalWindowExpanded() && trainingListPage.isSkillModalWindowCollapsed()) {
+    if (trainingListPage.isSkillModalWindowCollapsed()) {
       trainingListPage.expandSkillsModalWindow();
     }
     return this;
@@ -41,7 +42,8 @@ public class TrainingListBO {
     list.stream().forEach(element->Assert.assertTrue(String.format("Element '%s' does not contain word '%s'", element, word), element.contains(word)));
   }
 
-  public void verifyNoSearchResultsAreReturnedForSkillsSearch() {
+  public void verifyNoSearchResultsAreReturnedForSkillsSearch(List<String> list, final String word) {
+    list.stream().forEach(element->Assert.assertFalse(String.format("Element '%s' contain word '%s'", element, word), element.contains(word)));
     Assert.assertFalse("Search results are returned", trainingListPage.isSkillSearchResultsPresent());
   }
 }

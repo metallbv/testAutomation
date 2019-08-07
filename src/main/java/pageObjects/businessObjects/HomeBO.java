@@ -25,7 +25,7 @@ public class HomeBO {
   }
 
   public void verifyUserIsLoggedIn() {
-    Assert.assertTrue("", homePage.isUserNameShown());
+    Assert.assertTrue("", this.proceedToHomePage().isUserNameShown());
   }
 
   public  void verifyRightUserNameIsDisplayed(String userName) {

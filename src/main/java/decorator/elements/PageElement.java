@@ -57,10 +57,11 @@ public class PageElement implements WebElement {
     return webElement.findElement(by);
   }
 
+  @Override
   public boolean isDisplayed() {
     try {
       return webElement.isDisplayed();
-    } catch (NoSuchElementException e) {
+    } catch (NoSuchElementException | InvalidSelectorException e) {
       return false;
     }
   }

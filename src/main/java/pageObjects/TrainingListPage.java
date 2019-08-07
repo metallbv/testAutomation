@@ -12,10 +12,12 @@ public class TrainingListPage extends AbstractPage {
 
   private static final Logger logger = Logger.getLogger(TrainingListPage.class);
 
-  @FindBy (xpath = "//div[@class=\"filter-field__arrow-icon\" & @ng-click=\"openSkillsDropDown()\"]")
+  //@FindBy (xpath = "//div[@class=\"filter-field__arrow-icon\" & @ng-click=\"openSkillsDropDown()\"]")
+  @FindBy (xpath = "//div[@class=\"filter__item filter__item-skills\"]/div/div[@class=\"filter-field__arrow-icon\"]")
   private Button expandAllSkillsArrow;
 
-  @FindBy (xpath = "//class=\"filter-field__arrow-icon arrow-icon-rotate\" & @ng-click=\"openSkillsDropDown()\"]")
+  //@FindBy (xpath = "//class=\"filter-field__arrow-icon arrow-icon-rotate\" & @ng-click=\"openSkillsDropDown()\"]")
+  @FindBy (xpath = "//div[@class=\"filter__item filter__item-skills\"]/div/div[@class=\"filter-field__arrow-icon arrow-icon-rotate\"]")
   private Button collapseAllSkillsArrow;
 
   @FindBy (xpath = "//input[@ng-model=\"searchTrainingBySkills\"]")
@@ -25,7 +27,13 @@ public class TrainingListPage extends AbstractPage {
   private List<WebElement> skillsSearchResultsList;
 
   public TrainingListPage expandSkillsModalWindow() {
+    /*try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+
+    }*/
     waitForElementToBeVisible(expandAllSkillsArrow);
+    waitForElementToBeClickable(expandAllSkillsArrow);
     expandAllSkillsArrow.click();
     logger.info("Expand 'Skills' modal window");
     return this;
@@ -40,6 +48,10 @@ public class TrainingListPage extends AbstractPage {
 
   public boolean isSkillModalWindowExpanded() {
     return collapseAllSkillsArrow.isDisplayed();
+  }
+
+  public boolean isSkillModalWindowCollapsed() {
+    return expandAllSkillsArrow.isDisplayed();
   }
 
   public TrainingListPage performSearchInSkills(String searchTerm) {
